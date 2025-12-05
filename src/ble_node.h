@@ -1,20 +1,25 @@
-#ifndef BLE_NODE_H
-#define BLE_NODE_H
+#pragma once
 
-#include <stdbool.h>
+#include "esp_err.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// Inițializează BLE (apel din app_main)
-void ble_node_init(void);
+/**
+ * Initializeaza stack-ul BLE si porneste advertising-ul
+ * Serviciu custom cu o caracteristica de temperatura.
+ *
+ * Intoarce ESP_OK daca totul este in regula.
+ */
+esp_err_t ble_node_init(void);
 
-// Actualizează valoarea temperaturii expusă prin BLE (în grade Celsius)
+/**
+ * Actualizeaza temperatura expusa prin BLE.
+ * temp_c = temperatura in grade Celsius.
+ */
 void ble_node_update_temperature(float temp_c);
 
 #ifdef __cplusplus
 }
 #endif
-
-#endif // BLE_NODE_H
